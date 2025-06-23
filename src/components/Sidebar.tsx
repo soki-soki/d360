@@ -39,8 +39,8 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, onNavigate, isOpen = true,
       )}
       
       <aside className={`
-        fixed md:relative top-0 left-0 h-full w-72 bg-gray-800/95 backdrop-blur-sm border-r border-gray-700/50 z-50
-        transform transition-transform duration-300 ease-in-out
+        fixed md:relative top-0 left-0 h-full w-72 bg-gradient-sidebar backdrop-blur-sm border-r border-gray-700/50 z-50
+        transform transition-transform duration-300 ease-in-out shadow-xl
         ${isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
       `}>
         <div className="flex items-center justify-between p-5 md:hidden border-b border-gray-700/50">
@@ -48,23 +48,24 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, onNavigate, isOpen = true,
           <button 
             onClick={onClose}
             className="p-2 bg-gray-700/80 hover:bg-gray-600 rounded-full transition-colors"
+            aria-label="Close menu"
           >
-            <X className="w-5 h-5 text-gray-400" />
+            <X className="w-5 h-5 text-gray-300" />
           </button>
         </div>
         
         <nav className="p-4 md:p-5">
-          <ul className="space-y-1.5">
+          <ul className="space-y-2">
             {menuItems.map((item) => {
               const Icon = item.icon;
               return (
                 <li key={item.id}>
                   <button
                     onClick={() => handleItemClick(item.id)}
-                    className={`w-full flex items-center space-x-3.5 px-4 py-3.5 rounded-xl transition-all duration-200 font-medium ${
+                    className={`nav-item group ${
                       activeTab === item.id
-                        ? 'bg-gradient-to-r from-green-500 to-green-600 text-white shadow-lg'
-                        : 'text-gray-400 hover:text-white hover:bg-gray-700/70'
+                        ? 'nav-item-active'
+                        : 'nav-item-inactive'
                     }`}
                     type="button"
                   >
@@ -84,7 +85,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, onNavigate, isOpen = true,
               <span className="block text-gray-400 font-medium mb-1">Open pips</span>
               <span className="block opacity-70">v1.0.0</span>
             </div>
-            <div className="flex items-center space-x-1">
+            <div className="flex items-center space-x-1.5">
               <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
               <span className="text-xs text-gray-400">Live</span>
             </div>

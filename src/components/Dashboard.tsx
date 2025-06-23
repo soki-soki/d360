@@ -117,10 +117,10 @@ const Dashboard: React.FC = () => {
   ];
 
   return (
-    <div className="p-4 md:p-6 space-y-4 md:space-y-6">
+    <div className="p-4 md:p-6 space-y-6 md:space-y-8">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <h2 className="text-2xl md:text-3xl font-bold text-green-400 tracking-tight">Trading Dashboard</h2>
-        <div className="flex items-center space-x-2 text-sm text-gray-400">
+        <h2 className="text-2xl md:text-3xl font-bold text-green-400 tracking-tight text-shadow">Trading Dashboard</h2>
+        <div className="flex items-center space-x-2 text-sm text-gray-400 bg-gray-800/60 px-4 py-2 rounded-full border border-gray-700/40">
           <Activity className={`w-4 h-4 ${isConnected ? 'text-green-400' : 'text-red-400'}`} />
           <span>{isConnected ? 'Live Market Data' : 'Disconnected'}</span>
         </div>
@@ -128,13 +128,13 @@ const Dashboard: React.FC = () => {
 
       {/* Account Information */}
       {accountInfo && (
-        <div className="bg-gray-800/90 border border-gray-700/50 rounded-xl p-4 md:p-6 shadow-lg">
+        <div className="data-card">
           <h3 className="text-lg md:text-xl font-semibold text-white mb-4 flex items-center space-x-2 tracking-tight">
             <User className="w-5 h-5 text-green-400" />
             <span>Account Information</span>
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="bg-gray-700/50 p-4 rounded-lg hover:bg-gray-700/70 transition-colors duration-200 border border-gray-600/30">
+            <div className="info-item">
               <div className="flex items-center space-x-2 mb-2">
                 <Wallet className="w-4 h-4 text-green-400" />
                 <span className="text-gray-400 text-sm">Account Balance</span>
@@ -146,21 +146,21 @@ const Dashboard: React.FC = () => {
                 })}
               </p>
             </div>
-            <div className="bg-gray-700/50 p-4 rounded-lg hover:bg-gray-700/70 transition-colors duration-200 border border-gray-600/30">
+            <div className="info-item">
               <div className="flex items-center space-x-2 mb-2">
                 <User className="w-4 h-4 text-blue-400" />
                 <span className="text-gray-400 text-sm">Login ID</span>
               </div>
               <p className="text-lg font-medium text-white">{accountInfo.loginid}</p>
             </div>
-            <div className="bg-gray-700/50 p-4 rounded-lg hover:bg-gray-700/70 transition-colors duration-200 border border-gray-600/30">
+            <div className="info-item">
               <div className="flex items-center space-x-2 mb-2">
                 <DollarSign className="w-4 h-4 text-yellow-400" />
                 <span className="text-gray-400 text-sm">Currency</span>
               </div>
               <p className="text-lg font-medium text-white">{accountInfo.currency}</p>
             </div>
-            <div className="bg-gray-700/50 p-4 rounded-lg hover:bg-gray-700/70 transition-colors duration-200 border border-gray-600/30">
+            <div className="info-item">
               <div className="flex items-center space-x-2 mb-2">
                 <Activity className="w-4 h-4 text-green-400" />
                 <span className="text-gray-400 text-sm">Status</span>
@@ -176,7 +176,7 @@ const Dashboard: React.FC = () => {
 
       {/* Connection Notice */}
       {!isConnected && (
-        <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-xl p-4 shadow-lg">
+        <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-xl p-4 shadow-lg backdrop-blur">
           <div className="flex items-center space-x-2 text-yellow-400">
             <AlertCircle className="w-5 h-5" />
             <span className="font-medium">Market Data Only - Connect API for Trading Stats</span>
@@ -188,7 +188,7 @@ const Dashboard: React.FC = () => {
       )}
       
       {isConnected && !accountInfo && (
-        <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 shadow-lg">
+        <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 shadow-lg backdrop-blur">
           <div className="flex items-center space-x-2 text-blue-400">
             <AlertCircle className="w-5 h-5" />
             <span className="font-medium">Connected - Add API Token for Trading Data</span>
@@ -202,7 +202,7 @@ const Dashboard: React.FC = () => {
       {/* Stats Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
         {stats.map((stat, index) => (
-          <div key={index} className="bg-gray-800/90 border border-gray-700/50 p-4 md:p-6 rounded-xl hover:border-green-500/50 transition-all duration-300 shadow-lg hover:shadow-xl hover:transform hover:scale-[1.02]">
+          <div key={index} className="stat-card">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-gray-400 text-xs md:text-sm font-medium">{stat.label}</p>
@@ -218,7 +218,7 @@ const Dashboard: React.FC = () => {
       </div>
 
       {/* Symbol Selection */}
-      <div className="bg-gray-800/90 border border-gray-700/50 rounded-xl p-4 shadow-lg">
+      <div className="data-card">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
           <h3 className="text-lg font-semibold text-white flex items-center space-x-2 tracking-tight">
             <BarChart3 className="w-5 h-5 text-green-400" />
@@ -262,7 +262,7 @@ const Dashboard: React.FC = () => {
       <DigitAnalyzer />
 
       {/* Recent Activity */}
-      <div className="bg-gray-800/90 border border-gray-700/50 p-4 md:p-6 rounded-xl shadow-lg">
+      <div className="data-card">
         <h3 className="text-lg md:text-xl font-semibold text-white mb-4 flex items-center space-x-2 tracking-tight">
           <Target className="w-5 h-5 text-green-400" />
           <span>Recent Activity</span>
@@ -277,8 +277,8 @@ const Dashboard: React.FC = () => {
             <div key={index} className="flex items-center justify-between p-3 bg-gray-700/50 rounded-lg hover:bg-gray-700/80 transition-all duration-200 border border-gray-600/20 hover:border-gray-600/40 shadow-sm hover:shadow">
               <div className="flex items-center space-x-3">
                 <div className={`w-2 h-2 rounded-full ${
-                  activity.status === 'success' ? 'bg-green-400' :
-                  activity.status === 'pending' ? 'bg-yellow-400' : 'bg-red-400'
+                  activity.status === 'success' ? 'bg-green-400 animate-pulse' :
+                  activity.status === 'pending' ? 'bg-yellow-400 animate-pulse' : 'bg-red-400'
                 }`}></div>
                 <div>
                   <p className="text-white font-medium text-sm md:text-base tracking-tight">

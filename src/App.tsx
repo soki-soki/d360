@@ -46,7 +46,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-950">
+    <div className="min-h-screen bg-gradient-dark">
       <div className="flex flex-col h-screen overflow-hidden">
         <Header onMenuToggle={() => setSidebarOpen(!sidebarOpen)} />
         <div className="flex flex-1 overflow-hidden">
@@ -56,8 +56,10 @@ function App() {
             isOpen={sidebarOpen}
             onClose={() => setSidebarOpen(false)}
           />
-          <main className="flex-1 overflow-y-auto bg-gradient-to-br from-gray-900 to-gray-950">
-            {renderContent()}
+          <main className="flex-1 overflow-y-auto bg-gradient-to-br from-gray-900 to-gray-950 trading-grid">
+            <div className="max-w-7xl mx-auto">
+              {renderContent()}
+            </div>
           </main>
         </div>
       </div>
@@ -69,6 +71,8 @@ function App() {
         <div className="absolute top-1/2 left-3/4 w-1.5 h-1.5 bg-green-400/20 rounded-full animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
         <div className="absolute bottom-1/4 right-1/3 w-2 h-2 bg-blue-400/20 rounded-full animate-pulse-slow" style={{ animationDelay: '1.5s' }}></div>
         <div className="absolute top-1/3 right-1/4 w-1 h-1 bg-purple-400/30 rounded-full animate-pulse-slow" style={{ animationDelay: '2.5s' }}></div>
+        <div className="absolute bottom-1/3 left-1/5 w-1.5 h-1.5 bg-indigo-400/20 rounded-full animate-pulse-slow" style={{ animationDelay: '3s' }}></div>
+        <div className="absolute top-2/3 right-2/5 w-1 h-1 bg-cyan-400/30 rounded-full animate-pulse-slow" style={{ animationDelay: '3.5s' }}></div>
       </div>
     </div>
   );
