@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Open pips - Advanced Deriv Trading Bot</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+      // Handle OAuth callback - save token if present in URL
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("token")) {
+        localStorage.setItem("deriv_oauth_token", params.get("token"));
+        // Clean URL after storing token
+        window.history.replaceState({}, document.title, window.location.pathname);
+        console.log("✅ OAuth token saved successfully");
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

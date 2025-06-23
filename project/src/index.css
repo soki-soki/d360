@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #0f172a;
+  color: #f8fafc;
+  overflow-x: hidden;
+}
+
+.glass-effect {
+  background: #1f2937;
+  border: 1px solid #374151;
+}
+
+.glass-effect-light {
+  background: #374151;
+  border: 1px solid #4b5563;
+}
+
+.gradient-text {
+  color: #22c55e;
+  font-weight: 600;
+}
+
+.trading-grid {
+  background-image: 
+    linear-gradient(rgba(34, 197, 94, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 197, 94, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Button Styles */
+.btn-primary {
+  background: #22c55e;
+  color: white;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: #16a34a;
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: #374151;
+  color: #f8fafc;
+  border: 1px solid #4b5563;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: #4b5563;
+  border-color: #22c55e;
+}
+
+.btn-danger {
+  background: #ef4444;
+  color: white;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.btn-danger:hover {
+  background: #dc2626;
+  transform: translateY(-1px);
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .trading-grid {
+    background-size: 15px 15px;
+  }
+}
