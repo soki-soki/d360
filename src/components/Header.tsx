@@ -17,43 +17,43 @@ const Header: React.FC<HeaderProps> = ({ onMenuToggle }) => {
   }, []);
 
   return (
-    <header className="glass-effect border-b border-trading-gray-light px-4 md:px-6 py-3 md:py-4">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center space-x-3">
+    <header className="glass-effect border-b border-gray-700/50 px-4 md:px-6 py-3 md:py-4 z-10 relative">
+      <div className="flex items-center justify-between max-w-7xl mx-auto">
+        <div className="flex items-center space-x-4">
           <button 
             onClick={onMenuToggle}
-            className="md:hidden p-2 hover:bg-trading-gray-light rounded-lg transition-colors"
+            className="md:hidden p-2 hover:bg-gray-700/70 rounded-lg transition-colors"
           >
             <Menu className="w-5 h-5 text-gray-400" />
           </button>
-          <div className="relative">
-            <Bot className="w-6 md:w-8 h-6 md:h-8 text-trading-green animate-pulse-slow" />
-            <div className="absolute -top-1 -right-1 w-2 md:w-3 h-2 md:h-3 bg-trading-green rounded-full animate-bounce-slow"></div>
+          <div className="relative flex-shrink-0">
+            <Bot className="w-7 md:w-9 h-7 md:h-9 text-green-400 animate-pulse-slow" />
+            <div className="absolute -top-1 -right-1 w-2 md:w-3 h-2 md:h-3 bg-green-400 rounded-full animate-bounce-slow"></div>
           </div>
-          <div>
-            <h1 className="text-xl md:text-2xl font-bold gradient-text">Open pips</h1>
-            <p className="text-xs text-gray-400 hidden sm:block">Advanced Deriv Trading Bot</p>
+          <div className="flex flex-col">
+            <h1 className="text-xl md:text-2xl font-bold gradient-text tracking-tight">Open pips</h1>
+            <p className="text-xs text-gray-400 hidden sm:block font-medium">Advanced Deriv Trading Bot</p>
           </div>
         </div>
         
-        <div className="flex items-center space-x-2 md:space-x-4">
-          <div className={`flex items-center space-x-2 px-2 md:px-3 py-1 md:py-2 glass-effect rounded-lg border ${
-            isConnected ? 'border-trading-green' : 'border-red-500'
+        <div className="flex items-center space-x-3 md:space-x-5">
+          <div className={`flex items-center space-x-2 px-3 md:px-4 py-1.5 md:py-2 glass-effect-light rounded-full border ${
+            isConnected ? 'border-green-500/50' : 'border-red-500/50'
           }`}>
-            <Activity className={`w-3 md:w-4 h-3 md:h-4 ${isConnected ? 'text-trading-green' : 'text-red-400'}`} />
+            <Activity className={`w-3.5 md:w-4 h-3.5 md:h-4 ${isConnected ? 'text-green-400' : 'text-red-400'}`} />
             <span className={`text-xs md:text-sm font-medium hidden sm:inline ${
-              isConnected ? 'text-trading-green' : 'text-red-400'
+              isConnected ? 'text-green-400' : 'text-red-400'
             }`}>
               {isConnected ? 'Connected' : 'Connecting...'}
             </span>
           </div>
           
-          <div className="flex items-center space-x-1 md:space-x-2">
-            <button className="btn-secondary p-1.5 md:p-2 rounded-lg">
-              <Settings className="w-4 md:w-5 h-4 md:h-5 text-gray-300" />
+          <div className="flex items-center space-x-2 md:space-x-3">
+            <button className="p-2 md:p-2.5 bg-gray-800/80 hover:bg-gray-700 border border-gray-700/50 rounded-full transition-all duration-200">
+              <Settings className="w-4 md:w-5 h-4 md:h-5 text-gray-300 hover:text-white" />
             </button>
-            <button className="btn-secondary p-1.5 md:p-2 rounded-lg">
-              <User className="w-4 md:w-5 h-4 md:h-5 text-gray-300" />
+            <button className="p-2 md:p-2.5 bg-gray-800/80 hover:bg-gray-700 border border-gray-700/50 rounded-full transition-all duration-200">
+              <User className="w-4 md:w-5 h-4 md:h-5 text-gray-300 hover:text-white" />
             </button>
           </div>
         </div>
